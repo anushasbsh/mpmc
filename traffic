@@ -1,0 +1,23 @@
+const int RED = 13;
+const int YELLOW = 12;
+const int GREEN = 11;
+
+void setup() { 
+pinMode(RED,OUTPUT);
+  pinMode(YELLOW,OUTPUT); 
+  pinMode(GREEN,OUTPUT); 
+Serial.begin(9600); 
+} 
+ 
+void loop() { 
+  digitalWrite(RED,HIGH);
+   digitalWrite(YELLOW,LOW);
+             digitalWrite(GREEN,LOW); 
+             Serial.println("STOP"); delay(5000); 
+ 
+digitalWrite(RED,LOW); digitalWrite(YELLOW,HIGH); digitalWrite(GREEN,LOW); Serial.println("Ready"); 
+delay(2000); 
+ 
+digitalWrite(RED,LOW); digitalWrite(YELLOW,LOW); digitalWrite(GREEN,HIGH); Serial.println("Go"); 
+delay(5000); 
+}

@@ -1,0 +1,39 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial chat(10, 11);
+
+int text;
+bool sw = true;
+
+void setup()  
+{
+  Serial.begin(256);
+  chat.begin(256);
+}
+
+void loop() 
+{
+  if (chat.available()){
+  	Serial.write(chat.read());
+  } 
+    
+  if (Serial.available()) 
+  {
+    Serial.print("Me: ");
+    while (Serial.available()) 
+    {
+      text = Serial.read();
+      if(sw){
+      	chat.write("A: ");
+        chat.write(text);
+        sw = false;
+      }
+      else
+        chat.write(text);
+      Serial.write(text);
+    }
+    sw = true;
+    chat.println();
+    Serial.println();
+  }
+}
